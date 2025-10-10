@@ -13,10 +13,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key')
 DEBUG =  'True'
+ALLOWED_HOSTS = ["lakshya-library-production.up.railway.app", "127.0.0.1"]
 
-ALLOWED_HOSTS = ["web-production-xxx.up.railway.app","127.0.0.1","localhost"]
 
-CSRF_TRUSTED_ORIGINS = ["https://web-production-50fc0.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://lakshya-library-production.up.railway.app/"]
 
 # =========================
 # Installed apps
