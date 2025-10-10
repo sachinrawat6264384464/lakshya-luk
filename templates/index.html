@@ -331,12 +331,8 @@ h1 {
   <li><a href="studentdata">Students data</a></li>
   <li><a href="studentdata">Add-visiter</a></li>
 {% endif %}
-{% if username %}
-        <li><a href="#services">Facilities</a></li>
-        <li><a href="#contact">Contact</a></li>{% endif %}
 
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
+       
         {% if is_admin %}
   <li><a href="{% url 'studentdata' %}">Students data</a></li>
 {% endif %}
