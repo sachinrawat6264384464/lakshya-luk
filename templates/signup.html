@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup</title>
+
+<style>
+    /* 🌈 Background */
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #3b6e6e, #272728);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* 🧊 Signup Form */
+    .form {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        padding: 40px 35px;
+        border-radius: 20px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+        width: 350px;
+        text-align: center;
+        color: #fff;
+        transition: all 0.4s ease-in-out;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .form:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ✨ Heading */
+    .form h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #00ffc3;
+        font-weight: 600;
+    }
+
+    /* 🔤 Inputs */
+    .form input {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        font-size: 1rem;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .form input::placeholder {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .form input:focus {
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 10px #00ffc3;
+    }
+
+    /* 🔘 Button */
+    .form button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #00d084, #06c4b0);
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .form button:hover {
+        background: linear-gradient(135deg, #06e2b0, #00b07d);
+        box-shadow: 0 0 20px rgba(0, 255, 200, 0.6);
+        transform: translateY(-2px);
+    }
+
+    /* ⚠️ Messages */
+    p.error {
+        color: #ff4d4d;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px;
+        border-radius: 8px;
+        margin: 5px 0;
+        font-weight: 500;
+    }
+
+    p.success {
+        color: #00ff7f;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px;
+        border-radius: 8px;
+        margin: 5px 0;
+        font-weight: 500;
+    }
+
+    /* 🔗 Links */
+    a {
+        color: #00ffe1;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+
+    /* 🔙 Back Button */
+    .back-btn {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        font-size: 2rem;
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .back-btn:hover {
+        color: #00ffc3;
+    }
+
+    /* 📱 Responsive */
+    @media (max-width: 450px) {
+        .form {
+            width: 85%;
+            padding: 30px;
+        }
+        .form h2 {
+            font-size: 1.6rem;
+        }
+    }
+
+    /* ✨ Animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+
+<body>
+    <!-- 🔙 Back Button -->
+    <a href="{% url 'home' %}" class="back-btn">◀</a>
+
+    <!-- 🧾 Signup Form -->
+    <form method="post" class="form">
+        {% csrf_token %}
+        <h2>Sign Up</h2>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if success %}
+            <p class="success">{{ success }}</p>
+        {% endif %}
+
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="mobile" placeholder="Mobile No." required>
+        <input type="text" name="address" placeholder="Address" required>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+
+        <button type="submit">Sign Up</button>
+
+        <p style="margin-top: 10px;">Already have an account? <a href="{% url 'fuk' %}">Login</a></p>
+        <p>Admin? <a href="{% url 'admin' %}">Admin Login</a></p>
+    </form>
+</body>
+</html>

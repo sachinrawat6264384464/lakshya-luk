@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: edutrak               # Tumhare Render service ka naam
+    env: python
+    region: oregon               # ya nearest region choose karo
+    plan: free                   # free plan
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn CoachHub.wsgi:application
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+
+databases:
+  - name: edutrak-db
+    engine: postgresql
+    plan: free
+    user: myuser                 # Render automatically generate karega
+    password: mypassword         # Render automatically generate karega
+    envVar: DATABASE_URL          # Ye settings.py me DATABASE_URL ke liye use hoga

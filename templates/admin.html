@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+
+<style>
+    /* 🌌 Background */
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        color: #fff;
+        overflow: hidden;
+    }
+
+    /* 🧊 Form Container */
+    .form-login {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(15px);
+        padding: 40px 35px;
+        border-radius: 20px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+        width: 360px;
+        text-align: center;
+        transition: all 0.4s ease-in-out;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .form-login:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ✨ Heading */
+    .form-login h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        color: #00fff7;
+        font-weight: 700;
+        text-shadow: 0 0 10px #00fff7;
+    }
+
+    /* 🔤 Inputs */
+    .form-login input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        font-size: 1rem;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .form-login input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-login input:focus {
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 0 10px #00fff7;
+    }
+
+    /* 🔘 Button */
+    .form-login button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #00d1ff, #00bfff);
+        color: #111;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .form-login button:hover {
+        background: linear-gradient(135deg, #00bfff, #00dfff);
+        box-shadow: 0 0 20px #00fff7;
+        transform: translateY(-2px);
+    }
+
+    /* ⚠️ Messages */
+    p.error {
+        color: #ff4c4c;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px;
+        border-radius: 8px;
+        margin: 5px 0;
+        font-weight: 500;
+    }
+
+    p.success {
+        color: #00ff7f;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px;
+        border-radius: 8px;
+        margin: 5px 0;
+        font-weight: 500;
+    }
+
+    /* 🔗 Links */
+    a {
+        color: #00fff7;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+
+    /* 📱 Responsive */
+    @media (max-width: 450px) {
+        .form-login {
+            width: 85%;
+            padding: 30px;
+        }
+        .form-login h2 {
+            font-size: 1.6rem;
+        }
+    }
+
+    /* ✨ Animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+
+<body>
+    <!-- 🧾 Admin Login Form -->
+    <div class="form-login">
+        <h2>Admin Login</h2>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if success %}
+            <p class="success">{{ success }}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button type="submit">Loogin</button>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p>Login as user? <a href="{% url 'fuk' %}">User Login</a></p>
+        <p>Signup new user? <a href="{% url 'signup' %}">Sign Up</a></p>
+    </div>
+</body>
+</html>
