@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key')
 DEBUG =  'True'
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["web-production-xxx.up.railway.app","127.0.0.1","localhost"]
 
 CSRF_TRUSTED_ORIGINS = ["https://web-production-50fc0.up.railway.app"]
 
