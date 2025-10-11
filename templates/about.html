@@ -1,0 +1,310 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Dream Destinations</title>
+  <link rel="stylesheet" href="{% static 'css/about.css' %}">
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* === Hero Section === */
+.hero {
+  position: relative;
+  height: 90vh;
+  background: url("../images/about-bg.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1.5s ease;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero-content h1 span {
+  color: #00c6ff;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin: 15px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 25px;
+  background: linear-gradient(45deg, #ff512f, #dd2476);
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+/* === About Section === */
+.about-section {
+  padding: 80px 10%;
+  background: #f8f8f8;
+  color: #333;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.about-text {
+  flex: 1 1 45%;
+  animation: slideLeft 1.2s ease;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.about-image {
+  flex: 1 1 45%;
+  animation: slideRight 1.2s ease;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* === Mission Section === */
+.mission {
+  text-align: center;
+  padding: 80px 10%;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+}
+
+.mission h2 {
+  font-size: 2.3rem;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.card img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+/* === Team Section === */
+.team {
+  padding: 80px 10%;
+  text-align: center;
+  background: #fff;
+}
+
+.team h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+
+.team-member {
+  width: 220px;
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 15px;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+}
+
+.team-member img {
+  width: 100%;
+  border-radius: 50%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.team-member h4 {
+  margin-top: 10px;
+  color: #0072ff;
+}
+
+/* === Footer === */
+footer {
+  background: #222;
+  color: #bbb;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+/* === Animations === */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .hero-content h1 { font-size: 2.2rem; }
+  .about-container { flex-direction: column; }
+  .team-member { width: 180px; }
+}
+
+</style>
+<body>
+
+  <!-- === Hero Section === -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>About <span>Dream Destinations</span></h1>
+      <p>We craft unforgettable journeys that connect hearts to places.</p>
+      <a href="/" class="btn">Back to Home</a>
+    </div>
+  </section>
+
+  <!-- === About Company === -->
+  <section class="about-section">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>Who We Are</h2>
+        <p>
+          At <strong>Dream Destinations</strong>, we believe travel is not just about reaching a location —
+          it's about creating stories, connections, and moments that stay forever.
+          Since 2020, we’ve helped over <strong>50,000+</strong> travelers discover their dream locations
+          across the globe with trust and innovation.
+        </p>
+      </div>
+      <div class="about-image">
+        <img src="{% static 'images/travel-team.jpg' %}" alt="Our Team">
+      </div>
+    </div>
+  </section>
+
+  <!-- === Mission & Vision === -->
+  <section class="mission">
+    <h2>Our Core Values</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="{% static 'images/mission.png' %}" alt="Mission">
+        <h3>Our Mission</h3>
+        <p>To inspire and empower travelers to explore the world with confidence and passion.</p>
+      </div>
+      <div class="card">
+        <img src="{% static 'images/vision.png' %}" alt="Vision">
+        <h3>Our Vision</h3>
+        <p>To be the most trusted global travel brand that connects cultures through authentic experiences.</p>
+      </div>
+      <div class="card">
+        <img src="{% static 'images/values.png' %}" alt="Values">
+        <h3>Our Values</h3>
+        <p>Transparency, sustainability, creativity, and respect for every traveler’s journey.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- === Team Section === -->
+  <section class="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="{% static 'images/member1.jpg' %}" alt="Founder">
+        <h4>Sachin Rawat</h4>
+        <p>Founder & CEO</p>
+      </div>
+      <div class="team-member">
+        <img src="{% static 'images/member2.jpg' %}" alt="Designer">
+        <h4>Ananya Singh</h4>
+        <p>Creative Designer</p>
+      </div>
+      <div class="team-member">
+        <img src="{% static 'images/member3.jpg' %}" alt="Engineer">
+        <h4>Rahul Mehta</h4>
+        <p>Travel Engineer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- === Footer === -->
+  <footer>
+    <p>© 2025 Dream Destinations | All Rights Reserved 🌍</p>
+  </footer>
+
+</body>
+</html>
