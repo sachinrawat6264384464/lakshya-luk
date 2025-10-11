@@ -4,6 +4,7 @@ from django.utils import timezone
 
 class UserRegistration(models.Model):
     name = models.CharField(max_length=100)
+   
     mobile = models.CharField(max_length=15)
     address = models.TextField()
    
@@ -27,6 +28,7 @@ class UserRegistration(models.Model):
         db_table = 'EduTrack_userregistration'
 class AdminUser(models.Model):
     name = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100, default="Unknown")  # default add karo
     username = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(default=timezone.now)

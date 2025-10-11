@@ -28,11 +28,9 @@ urlpatterns = [
 
     path('about/', about, name='about'),
     path('visiter/', visiter, name='visiter'),
-    path('verify_otp/', verify_otp, name='verify_otp'),
+ 
     
-    path('newpassword/', newpassword, name='newpassword'),
-    path('newpassword/', newpassword, name='newpassword'),
-
+    
 
     path('delete_student/<int:id>/', delete_student, name='delete_student'),
 ]

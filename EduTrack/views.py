@@ -1,4 +1,4 @@
-from django.shortcuts import render
+
 
 # Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
@@ -6,15 +6,14 @@ from .models import UserRegistration, AdminUser
 from django.contrib import messages
 
 import random
-from django.shortcuts import render, redirect
+
 from django.contrib import messages
 from .models import UserRegistration
 from django.conf import settings
 
 import traceback
 
-from django.db import IntegrityError
-from django.contrib import messages
+
 
 
 # -------- User Signup --------
@@ -138,49 +137,3 @@ def about(request):
 
 def visiter(request):
    return render(request, 'addvisiter.html')
-def newpassword(request):
-    uid = request.session.get('reset_user_id')
-    if not uid:
-        return redirect('send_otp')  # redirect to OTP send view
-
-    try:
-        user = UserRegistration.objects.get(id=uid)
-    except UserRegistration.DoesNotExist:
-        messages.error(request, "User not found.")
-        return redirect('send_otp')
-
-    if request.method == 'POST':
-        p1 = request.POST.get('password1')
-        p2 = request.POST.get('password2')
-        if p1 and p1 == p2:
-            user.set_password(p1)
-            user.save()
-            messages.success(request, "Password reset successful. You can now login.")
-            return redirect('fuk')  # user login page
-        else:
-            messages.error(request, "Passwords do not match.")
-    
-    return render(request, 'newpassword.html')
-    
-
-
-
-
-
-# -------- Verify OTP --------
-def verify_otp(request):
-    if request.method == 'POST':
-        entered_otp = request.POST.get('otp')
-        session_otp = str(request.session.get('otp'))
-
-        if entered_otp == session_otp:
-            messages.success(request, "OTP verified successfully.")
-            return redirect('newpassword')
-        else:
-            messages.error(request, "Invalid OTP. Try again.")
-
-    return render(request, 'verify_otp.html')
-
-
-# -------- Reset Password (Your newpassword view) --------
-
