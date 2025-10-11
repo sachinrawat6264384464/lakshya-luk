@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in productio
 SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key')
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = False
 ALLOWED_HOSTS = ["lakshya-luk-production.up.railway.app", "127.0.0.1"]
 
 
@@ -50,16 +50,16 @@ MIDDLEWARE = [
 # =========================
 
 
-import os
-import dj_database_url
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('postgresql://postgres:NJmNqYrfkSQnoNEPIREPerAMznnEKWIf@interchange.proxy.rlwy.net:37784/railway')
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True
     )
 }
-
-
 # =========================
 # URLs & WSGI
 # =========================
