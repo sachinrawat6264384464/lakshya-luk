@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in productio
 SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key')
 DEBUG = False
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["lakshya-luk-production.up.railway.app"]
 
 
 CSRF_TRUSTED_ORIGINS = ["https://lakshya-luk-production.up.railway.app"]
@@ -55,9 +55,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=True
+          default=os.environ.get("DATABASE_URL")
+       
     )
 }
 # =========================
