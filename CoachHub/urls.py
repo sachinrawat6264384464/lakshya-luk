@@ -26,7 +26,7 @@ urlpatterns = [
     path('studentdata/', studentdata, name='studentdata'),
     path('studentinfo/', studentdata, name='studentinfo'),
 
-    path('about/', about, name='about'),
+    path('about/',about, name='about'),
     path('visiter/', visiter, name='visiter'),
  
     

@@ -1,198 +1,254 @@
 {% load static %} <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Lakhsya Library</title> <link rel="stylesheet" href="{% static 'css/index.css' %}"> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> </head>
-<style> *{ margin: 0; padding: 0; box-sizing: border-box; } body { margin:0; padding:0; height:100%; background-color: #767474; font-family:sans-serif; overflow-x: hidden; overflow-y: auto; /* scroll ke liye */ } /* Intro video */ #intro { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: rgb(14, 13, 13); display: flex; justify-content: center; align-items: center; opacity: 1; transition: opacity 1s ease-in-out, visibility 1s ease-in-out; }
-.logo-video { width: 50%; height: auto; } /* Main background video */ .bg-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; } /* Navbar container */ 
-.navbar {  height: 15vh; display: flex; align-items: center; justify-content: space-between; padding: 10px 50px; background-color: #1a1a1a; /* dark navbar */ color: #fff; position: sticky; top: 0; z-index: 100; } /* Logo */ 
-.navbar .logo { height: 50px; position:absolute; right: 70%; top: 9%; } /* Nav links */ 
-.nav-links li a { text-decoration: none; color: #fff; font-weight: 500; transition: color 0.3s; } .nav-links li a:hover { color: #00d1ff; /* sky-blue hover */ } /* Topbar (login/profile) */ /* Navbar container */ /* dropdown container */ @media (max-width: 900px) { .box { width: 45%; height: 200px; } } @media (max-width: 600px) { 
-/* Section container */
- /* --- Section Boxes --- */
-    .section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 60px 20px;
-    }
-    .box {
-
-      background: linear-gradient(145deg, #f8adad, #f5b09f);
-
-      background: linear-gradient(145deg, #1c62d2, #334155);
-
-      color: #e2e8f0;
-      width: 270px;
-      height: 260px;
-      border-radius: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    }
-    .box:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 12px 25px rgba(0, 255, 170, 0.5);
-    }
-
-
-/* Animation for rotating gradient */
-@keyframes rotateGradient {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+<style> 
+/* ===================== RESET & BASICS ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .box{
-    width: 80%;
-    height: 200px;
-    font-size: 1.3rem;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  height: 100%;
+  background-color: #767474;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-@media (max-width: 480px) {
-  .box {
-    width: 90%;
-    height: 180px;
-    font-size: 1.1rem;
-  }
-}
-
-
-.box { width: 100%; height: 180px; } } /* Logo */ .logo { height: 50px; } /* Nav links */ 
-.topbar button { padding: 8px 16px; background-color: #03b082; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; } .topbar button:hover { background-color: #05dfac; box-shadow: 0 0 8px rgba(135, 206, 250, 0.7); } .profile-img { width: 60px; height: 40px; border-radius: 50%; object-fit: cover; } /* Hamburger menu (mobile) */ .menu-toggle { display: none; font-size: 2rem; cursor: pointer; color: #03ba83; } 
- /* Mobile Responsive */ /* Responsive style */ @media (max-width: 459px) {.home-section {
-  height: 60vh;
-  margin-top: 21%;
+/* ===================== INTRO VIDEO ===================== */
+#intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: rgb(6, 6, 6);
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 1;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
 }
 
-.homeimg {
-  width: 90%;
-  text-align: center;
+.logo-video {
+  width: 80vw;
+  height: 70vh;
 }
 
-.homeimg img {
-  width: 90%;
-  max-width: 800px;
-  position: relative;
-  top: 20vh;
-  right: 10%;
+/* ===================== NAVBAR ===================== */
+.navbar {
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 50px;
+  background-color: #1a1a1a;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar .logo {
+  height: 50px;
+ position: relative;
+ left: 1.1rem;
+ top: 2rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s;
+  
+}
+
+.nav-links li a:hover {
+  color: #00d1ff;
+}
+
+/* Topbar buttons */
+.topbar button {
+  padding: 8px 16px;
+  background-color: #03b082;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.topbar button:hover {
+  background-color: #05dfac;
+  box-shadow: 0 0 8px rgba(135, 206, 250, 0.7);
+}
+
+.profile-img {
+  width: 60px;
+  height: 40px;
+  border-radius: 50%;
   object-fit: cover;
 }
 
- .navbar{ height: 5rem; } .topbar{ position: relative; top: 15px; } .nav-links-container{ position: absolute; top: 93%; left: 4%; } .nav-links{ flex-direction: row; position: absolute; top: 60%; gap: 9vw; opacity: 1; font-size:1.05rem; } .logo{ left: 2%; bottom: 10%; } } .list2{ opacity: 0;  cursor: pointer; position: absolute; top: 69%; left: 72vw; cursor: pointer; transition: 1.2s ease-in-out; background-color: rgb(11, 11, 11); padding: 10px; border-radius: 8px; } 
- .navbar{ height: 5rem; } .topbar{ position: relative; top: 15px; } .nav-links-container{ position: absolute; top: 93%; left: 4%; } .nav-links{ flex-direction: row; position: absolute; top: 60%; gap: 9vw; opacity: 1; font-size:1.05rem; } .logo{ left: 2%; bottom: 10%; }  .list2{ opacity: 0; position: absolute; top: 66%; left: 87vw; cursor: pointer; transition: 1.2s ease-in-out; background-color: rgb(128, 129, 129); padding: 10px; border-radius: 8px; } 
-
-.Home{ width: 100%; height: 90vh; display: flex; align-items: center; justify-content: center; } 
-.content{ margin-top: 41%; } .btn2{ top: 5%; left: 80%; color: rgb(13, 13, 13); background-color: #14b494; } .btn2:hover{ font-size: 1.1rem; font-weight: 900; box-shadow: 0 4px 10px 0 rgba(255, 255, 255, 1.8); } /*.content .btn{ width: 9vw; font-weight: 600; border-radius: 10px; height: 6vh; color: rgb(13, 13, 13); background-color: #4cc9f0; border: none; } .content .btn:hover{ font-size: 1.3rem; font-weight: 900; box-shadow: 0 4px 10px 0 rgba(255, 255, 255, 1.8); }*/ /* signup form satrta from heraea */ .container { display: flex; flex-wrap: wrap; gap: 20px; /* Box ke beech space */ justify-content: center; } 
-.box { width: 20; height: 40vh; background-color: #f2f2f2; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform 0.3s; } 
-.box:hover { transform: scale(1.05); } .box img { width: 100%; height: 70%; object-fit: cover; } .caption { padding: 10px; font-weight: bold; } /* Responsive */ @media (max-width: 1200px) { .box { width: 30%; } } @media (max-width: 800px) { .box { width: 45%; } } @media (max-width: 500px) { .box { width: 100%; } } @media (max-width: 768px) { .menu ul { width: 45%; gap: 2rem; } } /* scooler krna text ko right se left */ .scroller{ width: 100%; height: 17vh; background:transparent; display: flex; align-items: center; justify-content: center; font-size: 6vw; font-weight: 700; color: #e9ecef;  margin-top: 70vh; }
-.map-container { max-width: 1200px; margin: 40px auto; } .map-container iframe { width: 100%; height: 400px; border: 0; border-radius: 10px; } /* yaha se change hoga video ki background me fix rakhna hin ki nhi */ .section1 { position: relative; width: 100%; height: 100vh; /* full screen height */ overflow: hidden; }
-.section1 video { position: absolute; top: 20%; left: 50%; bottom: 10%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); /* center me laane ke liye */ object-fit: cover; /* pura area cover kare */ z-index: -1; } .content { position: relative; z-index: 1; color: white; text-align: center; top: 50%; transform: translateY(-50%); font-family: Arial, sans-serif; background: rgba(0,0,0,0.4); /* optional: text readable ho jaye */ padding: 20px; border-radius: 10px; display: inline-block; } 
-.content h1 { font-size: 3rem; margin-bottom: 20px; } .content p { font-size: 1.2rem; } /* Reset & basics */ /* Forms Container */ /* Forms Container */ /* Container */ .footer { background: linear-gradient(135deg, #1a1b1a, #1c1d1c, #161716); color: #f7f5f6; padding: 40px 20px; font-family: Arial, sans-serif; border-radius: 20px; } .footer-container { max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; } .footer-col { flex: 1; min-width: 220px; margin: 15px; } .footer h2, .footer h3 { color: #f5eeee; margin-bottom: 0px; } .footer p { line-height: 1.6; }
-.footer ul { list-style: none; padding: 0; } 
-.footer ul li { margin-bottom: 8px; } .footer ul li a { color: #e9e4e6; text-decoration: none; transition: 0.3s; } .footer ul li a:hover { color: #15dfba; text-decoration: underline; } /* Social Links */
-.social-links a { display: inline-block; margin-right: 12px; color: white; text-decoration: none; padding: 6px 10px; border: 1px solid white; border-radius: 20px; transition: 0.3s; } .social-links a:hover { background: #05edcb; color: #0c3c78; border-color: #f2c94c; } /* Bottom Bar */ 
-.footer-bottom { text-align: center; margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 12px; font-size: 14px; color: #ddd; } @media (max-width: 450px) { .menu ul { display: none; flex-direction: column; background: rgba(4, 153, 151, 0.95); position: absolute; top: 9vh; right: 0; width: 60%; padding: 1rem; border-radius: 10px; } 
-.menu ul.show { display: flex; } .menu-toggle { display: block; font-size: 2.5rem; cursor: pointer; color: #14b494; position: absolute; top: 20px; right: 20px; z-index: 20; } @keyframes togo { from{ transform: translateX(00%); } to{ transform: translateX(-10%); } } 
-.bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; } .menu ul{ gap: 1.2rem; } .menu{ margin-left: 1%; } 
-img{ width: 21vw; } 
-.btn2{ width: 30vw; position: absolute; top: 89%; left: 35%; }
-.forms{ height: 80vh; }
-.signup-box{ width: 80vw; height: 60vh; }
-.signup-box h2{ font-size: 1.1rem; } 
-.signup-box input { padding: 0.4rem;} }
-.silo {
-  text-decoration: none;
-  background: linear-gradient(135deg, #00d084, #06c4b0);
-  color: #fff;
+.logout-btn {
+  padding: 8px 16px;
   border: none;
-  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ff4444, #cc0000);
+  color: white;
   font-weight: 600;
-  border-radius: 12px;
-  padding: 10px 20px;
-  display: inline-block;
-  position: relative;
-  transition: all 0.4s ease-in-out;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 255, 150, 0.4);
+  font-size: 7px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(255, 0, 0, 0.3);
+  text-decoration: none;
 }
 
-/* ✨ Hover Animation */
-.silo::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
+.logout-btn:hover {
+  background: linear-gradient(135deg, #ff6666, #ff1a1a);
+  transform: translateY(-2px);
+}
+
+/* ===================== HERO SECTION ===================== */
+.hero-content {
+  background-color: #3a3939;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.3));
-  transition: all 0.6s ease-in-out;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+
 }
 
-.silo:hover::before {
-  left: 100%;
+.hero-content h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 0.5rem;
+    animation: frude 2s ease ;
+    
 }
 
+.hero-content .highlight {
+  display: block;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  color: #ff6666;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  margin-bottom: 1.5rem;
+}
+
+.hero-content .btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  color: #00b87c;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.hero-content .btn:hover {
+  background-color: #ff6666;
+  color: white;
+}
+
+
+
+
+
+
+.silo {
+  background: linear-gradient(45deg, #28a745, #ff8c00); /* green to orange */
+  color: white;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: bold;
+  position: fixed;
+  top: 10%;
+  right: 4%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+ a{
+text-decoration: none;
+color: #e9ecef;
+}
 .silo:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 25px rgba(0, 255, 170, 0.6);
-  background: linear-gradient(135deg, #05dfac, #00b87c);
+  background: linear-gradient(45deg, #ff8c00, #28a745); /* reverse on hover */
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  font-size: 1.3rem;
 }
 
-/* 💡 Small Glow Effect */
-.silo:active {
-  transform: scale(0.95);
-  box-shadow: 0 0 25px rgba(0,255,170,0.8);
+
+
+
+
+
+
+
+
+
+/* ===================== SECTION BOXES ===================== */
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 1rem;
+
+  margin-right: 10vw;
 }
 
-/* 📱 Mobile View Styling */
-@media (max-width: 450px) {
-  .silo {
-    display: block;
-
-    position: relative;
-    bottom: 2ch;
-    left: 8vw;
-   
-
-    width: 60vw;
-    height: 6vh;
-    text-align: center;
-    font-size: 1rem;
-    border-radius: 15px;
-
-  
-
-    padding: 8px 0;
-
-    background: linear-gradient(135deg, #00b37e, #06d6a0);
-    box-shadow: 0 5px 15px rgba(0,255,170,0.4);
-  }
-
+.section .box {
+  width: 270px;
+  height: 260px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e2e8f0;
+  background: linear-gradient(145deg, #1c62d2, #334155);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
-.logo{ position: relative; right: 30%; }
-marquee{ font-size: 2rem; } 
 
+.section .box:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 255, 170, 0.5);
+}
+
+/* ===================== BOOKS GRID ===================== */
 .boo {
   padding: 4% 5%;
   text-align: center;
 }
 
-h1 {
+.boo h1 {
   color: #f1f5f9;
   font-size: 2.3rem;
   letter-spacing: 2px;
 }
 
-/* Responsive Grid Layout */
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -201,7 +257,6 @@ h1 {
   margin-top: 40px;
 }
 
-/* Book Box */
 .box8, .box9, .box10, .box11, .box12 {
   border-radius: 20px;
   width: 100%;
@@ -218,7 +273,6 @@ h1 {
   box-shadow: 0 12px 25px rgba(0, 255, 170, 0.5);
 }
 
-/* Caption Style */
 .caption8, .caption9, .caption10, .caption11, .caption12 {
   position: absolute;
   bottom: 0;
@@ -244,7 +298,6 @@ h1 {
   transform: translateY(0);
 }
 
-/* Caption Text */
 .caption8 h2, .caption9 h2, .caption10 h2, .caption11 h2, .caption12 h2 {
   margin-bottom: 10px;
   color: white;
@@ -256,7 +309,6 @@ h1 {
   margin-bottom: 15px;
 }
 
-/* Button Style */
 .caption8 button, .caption9 button, .caption10 button, .caption11 button, .caption12 button {
   background-color: #0f766e;
   color: white;
@@ -277,91 +329,138 @@ h1 {
   transform: scale(1.05);
 }
 
-@media (min-width: 600px) {
-  h1 {
-    font-size: 1.8rem;
-  }
-  .caption8 h2, .caption9 h2, .caption10 h2, .caption11 h2, .caption12 h2 {
-    font-size: 1rem;
-  }
-
-}
-
-@media (max-width: 620px) {
-  h1 {
-    font-size: 1.8rem;
-  }
-  .caption8 h2, .caption9 h2, .caption10 h2, .caption11 h2, .caption12 h2 {
-    font-size: 1rem;
-  }
-}
-
-  .whatsapp-link img {
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-   position: absolute;
-   top: 70vh;
-   right: 3%;
-   z-index: 20;
-  }
-
-  .whatsapp-link img:hover {
-    transform: scale(1.1);
-  }
-  /* Logout Button Styling */
-.logout-btn {
-  padding: 8px 16px;
-  border: none;
+/* ===================== SCROLLER ===================== */
+.scroller {
+  width: 100%;
+  height: auto;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #ff4444, #cc0000);
-  color: white;
-  font-weight: 600;
-  font-size: 7px;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(255, 0, 0, 0.3);
-  text-decoration: none;
+  font-size: 6vw;
+  font-weight: 700;
+  color: #e9ecef;
+  margin-top: 20px;
 }
 
-.logout-btn:hover {
-  background: linear-gradient(135deg, #ff6666, #ff1a1a);
-  transform: translateY(-2px);
+marquee {
+  font-size: 2rem;
 }
 
-/* Responsive fix */
+/* ===================== WHATSAPP BUTTON ===================== */
+   /* === Social Links Container === */
+   .hh{
+   display: flex; align-items: center; justify-content: center; position: fixed ;  z-index: 888; top: 47vw; bottom: 50vh; right: 0px;
+   }
+    .social-links {
+     
+     
+    
+      gap: 25px;
+      margin-top: 30px;
+      
+      padding: 20px;
+      border-radius: 20px;
+    
+      z-index: 2;
+      }
+
+    /* === Icon Styling === */
+    .social-links a {
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.3s ease;
+       
+    }
+
+    .social-links a img {
+      width: 50px;
+      height: 50px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+       
+    }
+
+    /* === Hover Effects === */
+    .social-links a:hover img {
+      transform: scale(1.2);
+      filter: brightness(1.3);
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+    }
+
+    /* === Label Styling === */
+    .social-links span {
+      display: block;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* === Responsive === */
+    @media (max-width: 600px) {
+      .social-links {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .social-links a img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1024px) {
+  .section .box { width: 220px; height: 240px; font-size: 1.3rem; }
+}
+
 @media (max-width: 768px) {
-  .topbar {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .logout-btn {
-    width: 86%;
-  
-  }
+  .section .box { width: 45%; height: 200px; font-size: 1.2rem; }
 }
+
+@media (max-width: 500px) {
+  .section .box { width: 90%; height: 180px; font-size: 1.1rem; }
+  
+}
+
 @media (max-width: 450px) {
-  
-  .logout-btn {
-    width: 75%;
-   position: relative;
-   left: 10vw;
-   bottom: 3vw;
-   font-size: 8px;
-   
+  .logout-btn { width: 75%; position: relative; left: 10vw; bottom: 3vw; font-size: 8px; }
+  .hero-content { font-size: 1rem; }
+ .nav-links::after{
+ content: "|||";
+ width: 2rem;
+ height: 3rem;
+ font-size: 1.6rem;
+position: relative;
+right: 8vw;
+bottom: 31vh;
+
+ border-radius: 10px;
+ 
+ }
+ .hh{
+ top:95vh;
+ 
+ }
+ 
+}
+
+@keyframes frude {
+from{
+ opacity: 0;
+ transform: translateY(30px);
+}
+  to{
+  opacity: 1;
+  transform: translateY(0px);
   }
 }
 
-
 </style>
-
-</style>
-<body style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);">
+<body style="background-color: #767474;">
 
 <!-- Intro Video -->
 <div id="intro">
@@ -389,8 +488,8 @@ h1 {
     <ul class="nav-links">
 
     
-        <li><a href="visiter">Home</a></li>
-        <li><a href="about">About</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
           
         {% if is_admin %}
   <li><a href="studentdata">Students data</a></li>
@@ -433,22 +532,37 @@ h1 {
 
   
 </nav>
+<div class="hero-content">
+  <div>
+    <h1>Welcome to the Magic World of KNOWLEDGE</h1>
+    <span class="highlight">Discover Your Dream Destinations</span>
+    <p>Embark on unforgettable journeys curated just for you</p>
+    
+  </div>
+</div>
+<div class="social-links">
+<div class="hh">
+  <!-- WhatsApp -->
+  <a href="https://wa.me/916264384464?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20services."
+     target="_blank" rel="noopener noreferrer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
 
+  <!-- YouTube -->
+  <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+  </a>
 
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+  </a>
 
-
-<a class="whatsapp-link" 
-   href="https://wa.me/916264384464?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20services." 
-   target="_blank" 
-   rel="noopener noreferrer">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-       alt="WhatsApp Logo">
-</a>
-
-
-
-  
-
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook">
+  </a>
+</div></div>
 
 
 <div class="scroller" >
@@ -456,10 +570,12 @@ h1 {
   </marquee>
 
 </div>
-<section class="section">
+<section class="section" >
   <div class="box"><span>Web Design</span></div>
   <div class="box"><span>App Dev</span></div>
   <div class="box"><span>AI Tools</span></div>
+  <div class="box"><span>Consulting</span></div>
+  <div class="box"><span>Consulting</span></div>
   <div class="box"><span>Consulting</span></div>
 </section>
 <section class="boo">
