@@ -160,8 +160,8 @@ img{ width: 21vw; }
 
     position: relative;
     bottom: 2ch;
-
-    margin: 15% auto;
+    left: 8vw;
+   
 
     width: 60vw;
     height: 6vh;
@@ -176,6 +176,7 @@ img{ width: 21vw; }
     background: linear-gradient(135deg, #00b37e, #06d6a0);
     box-shadow: 0 5px 15px rgba(0,255,170,0.4);
   }
+
 }
 .logo{ position: relative; right: 30%; }
 marquee{ font-size: 2rem; } 
@@ -276,7 +277,7 @@ h1 {
   transform: scale(1.05);
 }
 
-@media (max-width: 600px) {
+@media (min-width: 600px) {
   h1 {
     font-size: 1.8rem;
   }
@@ -284,19 +285,20 @@ h1 {
     font-size: 1rem;
   }
 
- 
-@media (max-width: 400px) {
+}
 
- .list2{
-  opacity: 1;
+@media (max-width: 620px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  .caption8 h2, .caption9 h2, .caption10 h2, .caption11 h2, .caption12 h2 {
+    font-size: 1rem;
   }
 }
 
-}
-
   .whatsapp-link img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     cursor: pointer;
     transition: transform 0.3s ease;
    position: absolute;
@@ -308,6 +310,48 @@ h1 {
   .whatsapp-link img:hover {
     transform: scale(1.1);
   }
+  /* Logout Button Styling */
+.logout-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ff4444, #cc0000);
+  color: white;
+  font-weight: 600;
+  font-size: 7px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(255, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #ff6666, #ff1a1a);
+  transform: translateY(-2px);
+}
+
+/* Responsive fix */
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .logout-btn {
+    width: 86%;
+  
+  }
+}
+@media (max-width: 450px) {
+  
+  .logout-btn {
+    width: 86%;
+   position: relative;
+   left: 10vw;
+   bottom: 8vw;
+  }
+}
+
 
 </style>
 
@@ -358,35 +402,18 @@ h1 {
     </ul>
 </div>
 
-   <div class="topbar" >
-    {% if username %}
-        <p style="font-size: 1.2rem; font-weight: 500; gap: 2rem;"> {{ username }}</p>
-   <div class="toggle2">
-
-  <h3  style="cursor: pointer;"> 🔴</h3>
-  <p  style="cursor: pointer;">/logout</p>
-  
-
-  <h3>hi</h3>
-   </div> <div class="list2" > 
-    
-      {% if is_admin %}
-      <h3><a style="text-decoration: none; font-size: 1.2rem; color: #fff;" href="">ViewprofileD</a> </h3>
-     {% else%}
-     <h3><a style="text-decoration: none; font-size: 1.2rem; color: #fff;" href="">ViewprofileU</a> </h3>
-      
-      {% endif %}
-      <h3><a style="text-decoration: none; font-size: 1.2rem;   color: #fff;" href="{% url 'logout' %}">Logout</a> </h3>
-      
-     
+   <div class="topbar d-flex align-items-center">
+  {% if username %}
+    <div class="user-info text-white me-3">
+      <strong>{{ username }}</strong>
     </div>
 
-  
-    {% else %}
-        <a class="silo" href="{% url 'signup' %}">Signup/Login</a>
-    {% endif %}
+    <!-- Logout Button -->
+    <a href="{% url 'logout' %}" class="logout-btn btn btn-sm btn-danger">Logout</a>
+  {% else %}
+    <a class="silo" href="{% url 'signup' %}">Signup/Login</a>
+  {% endif %}
 </div>
-
 
 
  </div> <div class="list2" > 

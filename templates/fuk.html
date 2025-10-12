@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <style>
+     *{
+     margin: 0%;
+     padding: 0%;
+     box-sizing: border-box;
+     
+     }
         /* 🌈 Background Style */
         body {
             font-family: 'Poppins', sans-serif;
@@ -23,7 +29,7 @@
             padding: 35px 30px;
             border-radius: 20px;
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
-            width: 320px;
+            width: 40%;
             text-align: center;
             color: #fff;
             transition: all 0.3s ease-in-out;
@@ -37,7 +43,7 @@
         /* 🧠 Title */
         .login-box h2 {
             margin-bottom: 25px;
-            font-size: 1.8rem;
+            font-size: 3.2rem;
             letter-spacing: 1px;
             font-weight: 600;
             color: #fff;
@@ -53,7 +59,7 @@
             outline: none;
             background: rgba(255, 255, 255, 0.2);
             color: #fff;
-            font-size: 1rem;
+            font-size: 1.9rem;
             transition: 0.3s;
         }
 
@@ -74,7 +80,7 @@
             border: none;
             border-radius: 10px;
             color: white;
-            font-size: 1.1rem;
+            font-size: 1.8rem;
             font-weight: 600;
             cursor: pointer;
             transition: 0.4s;
@@ -93,7 +99,7 @@
             background: rgba(255, 255, 255, 0.2);
             padding: 8px;
             border-radius: 8px;
-            font-size: 0.9rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
         }
 
@@ -102,14 +108,22 @@
             color: #00ffcc;
             text-decoration: none;
             font-weight: 500;
+            font-size: 1.3rem;
         }
-
+     p{
+     font-weight: 500;
+            font-size: 1.3rem;
+     }
         a:hover {
             color: #ffffff;
             text-decoration: underline;
         }
-
-        /* 📱 Responsive */
+input::placeholder {
+  font-size: 1.5rem;      /* font size */
+  color: #888;            /* placeholder color */
+  font-style: italic;     /* optional: italic style */
+  opacity: 1;             /* Firefox default opacity fix */
+}/* 📱 Responsive */
         @media (max-width: 450px) {
             .login-box {
                 width: 85%;
@@ -135,7 +149,7 @@
 
             <p style="margin-top: 15px;">New user? <a href="{% url 'signup' %}">Sign Up</a></p>
             
-    
+    <a href="{% url 'home' %}" class="back-btn">◀ Back</a>
         </form>
     </div>
 </body>

@@ -157,7 +157,7 @@
 
 <body>
     <!-- 🔙 Back Button -->
-    <a href="{% url 'home' %}" class="back-btn">◀</a>
+    
 
     <!-- 🧾 Signup Form -->
     <form method="post" class="form">
@@ -181,7 +181,9 @@
         <button type="submit">Sign Up</button>
 
         <p style="margin-top: 10px;">Already have an account? <a href="{% url 'fuk' %}">Login</a></p>
+        
         <p>Admin? <a href="{% url 'admin' %}">Admin Login</a></p>
+    <a href="{% url 'home' %}" class="back-btn">◀</a>
     </form>
 </body>
 </html>
