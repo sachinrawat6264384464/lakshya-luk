@@ -1,5 +1,5 @@
 {% load static %} <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Lakhsya Library</title> <link rel="stylesheet" href="{% static 'css/index.css' %}"> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> </head>
-<style> *{ margin: 0; padding: 0; box-sizing: border-box; } body, html { margin:0; padding:0; height:100%; font-family:sans-serif; overflow-x: hidden; overflow-y: auto; /* scroll ke liye */ } /* Intro video */ #intro { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: black; display: flex; justify-content: center; align-items: center; opacity: 1; transition: opacity 1s ease-in-out, visibility 1s ease-in-out; }
+<style> *{ margin: 0; padding: 0; box-sizing: border-box; } body { margin:0; padding:0; height:100%; background-color: #767474; font-family:sans-serif; overflow-x: hidden; overflow-y: auto; /* scroll ke liye */ } /* Intro video */ #intro { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: rgb(14, 13, 13); display: flex; justify-content: center; align-items: center; opacity: 1; transition: opacity 1s ease-in-out, visibility 1s ease-in-out; }
 .logo-video { width: 50%; height: auto; } /* Main background video */ .bg-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; } /* Navbar container */ 
 .navbar {  height: 15vh; display: flex; align-items: center; justify-content: space-between; padding: 10px 50px; background-color: #1a1a1a; /* dark navbar */ color: #fff; position: sticky; top: 0; z-index: 100; } /* Logo */ 
 .navbar .logo { height: 50px; position:absolute; right: 70%; top: 9%; } /* Nav links */ 
@@ -314,6 +314,9 @@ h1 {
 .logout-btn {
   padding: 8px 16px;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
   background: linear-gradient(135deg, #ff4444, #cc0000);
   color: white;
@@ -345,10 +348,12 @@ h1 {
 @media (max-width: 450px) {
   
   .logout-btn {
-    width: 86%;
+    width: 75%;
    position: relative;
    left: 10vw;
-   bottom: 8vw;
+   bottom: 3vw;
+   font-size: 8px;
+   
   }
 }
 
@@ -402,10 +407,10 @@ h1 {
     </ul>
 </div>
 
-   <div class="topbar d-flex align-items-center">
+   <div class="topbar d-flex align-items-center ">
   {% if username %}
     <div class="user-info text-white me-3">
-      <strong>{{ username }}</strong>
+      <strong >{{ username }}</strong>
     </div>
 
     <!-- Logout Button -->
@@ -428,6 +433,9 @@ h1 {
 
   
 </nav>
+
+
+
 
 <a class="whatsapp-link" 
    href="https://wa.me/916264384464?text=Hello!%20I%20want%20to%20know%20more%20about%20your%20services." 

@@ -2,7 +2,7 @@
 
 # Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import UserRegistration, AdminUser
+from .models import UserRegistration, AdminUser,Visiter
 from django.contrib import messages
 
 import random
@@ -21,9 +21,9 @@ import traceback
 
 from django.shortcuts import render
 from EduTrack.models import UserRegistration
-
+import traceback
 def signup(request):
-    import traceback
+    
 
     try:
         if request.method == 'POST':
@@ -136,4 +136,26 @@ def about(request):
 
 
 def visiter(request):
-   return render(request, 'addvisiter.html')
+
+   try:
+    if request.method=="post":
+       name=request.POST.get("name")
+       email=request.POST.get("email")
+       phone=request.POST.get("phone")
+       purpose=request.POST.get("purpose")
+       if Visiter.objects.filter(name=name).exists():
+                return render(request, 'visiter.html', {'error': 'visiter already taken'})
+
+       visiter=Visiter(
+       name=name,
+       email=email,
+       phone=phone,
+       purpose=purpose
+       )
+       visiter.save()
+     
+       return render(request,"visiter.html",{'success':'visiter successfully added ✅'})
+    return render(request,"visiter.html")
+   except Exception as e:
+        print(traceback.format_exc())
+        return render(request, 'signup.html', {'error': f'Unexpected error: {str(e)}'})

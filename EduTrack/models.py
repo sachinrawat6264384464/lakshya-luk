@@ -45,3 +45,11 @@ class AdminUser(models.Model):
         return self.username
     class Meta:
         db_table = 'EduTrack_adminuser'  # ✅ Alag table name
+class Visiter(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    phone = models.CharField(max_length=15)
+    purpose = models.CharField(max_length=200)
+    created_at = models.DateTimeField(default=timezone.now)
+class Meta:
+        db_table = 'visitersdata'

@@ -19,7 +19,7 @@ from django.urls import path
 from EduTrack.views import *
 urlpatterns = [
     path("", index, name='home'),
-    path('fuk/', fuk_view, name='fuk'),
+    path('login/', fuk_view, name='fuk'),
     path('admin/', admin_login, name='admin'),
     path('signup/', signup, name='signup'),
     path('logout/', logout_view, name='logout'),
