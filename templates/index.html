@@ -486,14 +486,14 @@ from{
     
 <div class="nav-links-container" >
     <ul class="nav-links">
-
-    
+ {% if is_admin %}
+  <li><a href="studentdata">Students data</a></li>
+  <li><a href="visiter">Add-visiter</a></li>
+    {% else %}
         <li><a href="/">Home</a></li>
         <li><a href="/about/">About</a></li>
           
-        {% if is_admin %}
-  <li><a href="studentdata">Students data</a></li>
-  <li><a href="visiter">Add-visiter</a></li>
+       
 {% endif %}
 
        
