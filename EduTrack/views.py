@@ -2,7 +2,7 @@
 
 # Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import UserRegistration, AdminUser,Visiter
+from .models import UserRegistration, AdminUser,Visiterdata
 from django.contrib import messages
 
 import random
@@ -138,15 +138,18 @@ def about(request):
 def visiter(request):
 
    try:
-    if request.method=="post":
+    if request.method=="POST":
        name=request.POST.get("name")
        email=request.POST.get("email")
        phone=request.POST.get("phone")
        purpose=request.POST.get("purpose")
-       if Visiter.objects.filter(name=name).exists():
+       if Visiterdata.objects.filter(email=email).exists():
+                return render(request, 'visiter.html', {'error': 'Email already exists'})
+
+       if Visiterdata.objects.filter(name=name).exists():
                 return render(request, 'visiter.html', {'error': 'visiter already taken'})
 
-       visiter=Visiter(
+       visiter=Visiterdata(
        name=name,
        email=email,
        phone=phone,
@@ -154,8 +157,16 @@ def visiter(request):
        )
        visiter.save()
      
+       print("Saved visiter:", visiter.id)
        return render(request,"visiter.html",{'success':'visiter successfully added ✅'})
     return render(request,"visiter.html")
    except Exception as e:
         print(traceback.format_exc())
-        return render(request, 'signup.html', {'error': f'Unexpected error: {str(e)}'})
+        return render(request, 'visiter.html', {
+    'error': 'Visiter already taken',
+    'name': name,
+    'email': email,
+    'phone': phone,
+    'purpose': purpose
+})
+
