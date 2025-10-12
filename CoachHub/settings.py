@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in productio
 SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key')
 DEBUG = False
-ALLOWED_HOSTS = ["lakshya-luk-production.up.railway.app"]
+ALLOWED_HOSTS = ["lakshya-luk-production.up.railway.app","127.0.0.1"]
 
 
 CSRF_TRUSTED_ORIGINS = ["https://lakshya-luk-production.up.railway.app"]
