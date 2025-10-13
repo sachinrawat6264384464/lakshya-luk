@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top 10 Books of the Year</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1b2735, #090a0f);
+      color: white;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      background-color: #ff914d;
+      color: white;
+      padding: 20px;
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    table {
+      margin: 40px auto;
+      border-collapse: collapse;
+      width: 90%;
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    th, td {
+      padding: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+      word-wrap: break-word;
+    }
+
+    th {
+      background-color: #ff914d;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    td {
+      font-size: 0.95rem;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transition: 0.3s;
+    }
+
+    caption {
+      caption-side: bottom;
+      font-size: 1rem;
+      color: #ccc;
+      margin-top: 15px;
+    }
+
+    a.delete {
+      text-decoration: none;
+      background: #36f485;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-weight: bold;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    a.delete:hover {
+      background: #f34943;
+    }
+
+    /* 🔹 Responsive Design */
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead tr {
+        display: none; /* Hide table headers */
+      }
+
+      tr {
+        margin-bottom: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      td {
+        text-align: right;
+        padding: 10px 15px;
+        position: relative;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: 50%;
+        text-align: left;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #ff914d;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        padding: 15px;
+      }
+
+      caption {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📚 Top 10 Books of the Year</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Purpose</th>
+        <th>Date of Visit</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for visiter in visiter %}
+      <tr>
+        <td data-label="ID">{{ visiter.id }}</td>
+        <td data-label="Name">{{ visiter.name }}</td>
+        <td data-label="Email">{{ visiter.email }}</td>
+        <td data-label="Phone">{{ visiter.phone }}</td>
+        <td data-label="Purpose">{{ visiter.purpose }}</td>
+        <td data-label="Date of Visit">{{ visiter.created_at }}</td>
+        <td data-label="Action">
+          <a href="{% url 'delete_visiter' visiter.id %}" class="delete">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <caption>✨ Explore these inspiring reads that defined the year!</caption>
+
+</body>
+</html>

@@ -24,13 +24,13 @@ urlpatterns = [
     path('signup/', signup, name='signup'),
     path('logout/', logout_view, name='logout'),
     path('studentdata/', studentdata, name='studentdata'),
-    path('studentinfo/', studentdata, name='studentinfo'),
+    path('visiterdata/', visiterdata, name='visiterdata'),
 
     path('about/',about, name='about'),
     path('visiter/', visiter, name='visiter'),
  
     
-    
+    path('delete_visiter/<int:id>/', delete_visiter, name='delete_visiter'),
 
     path('delete_student/<int:id>/', delete_student, name='delete_student'),
 ]

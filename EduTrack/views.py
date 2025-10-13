@@ -169,4 +169,11 @@ def visiter(request):
     'phone': phone,
     'purpose': purpose
 })
+def visiterdata(request):
+    visiter=Visiterdata.objects.all()
+    return render(request,"visiterdata.html",{'visiter':visiter})
 
+def delete_visiter(request, id):
+    student_visiter = get_object_or_404(Visiterdata, id=id)
+    student_visiter.delete()
+    return redirect('visiterdata')
