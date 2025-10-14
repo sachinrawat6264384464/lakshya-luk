@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seat_Info</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #575653, #1ea088);
+      height: auto;
+      overflow-x: hidden;
+    }
+
+    h2 {
+      letter-spacing: 1px;
+    }
+
+    .header {
+      width: 100vw;
+      height: 9vh;
+      background-color: #333535;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .main {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .btns {
+      padding: 1.5rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    button {
+      width: 7rem;
+      height: 3rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg, #0dbe89, #05e6a6);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    }
+
+    button.booked {
+      background: linear-gradient(135deg, #ff512f, #dd2476);
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header"><h2>Seat_Status</h2></div>
+
+  <div class="main">
+    <!-- Left Side Seats -->
+    <div class="btns" style="background-color: rgba(217, 97, 17, 0.3);">
+      <button>01</button>
+      <button>02</button>
+      <button>03</button>
+      <button>04</button>
+      <button>05</button>
+      <button>06</button>
+      <button>07</button>
+      <button>08</button>
+      <button>09</button>
+      <button>10</button>
+      <button>11</button>
+     <button>12</button>
+      <button>13</button>
+      <button>14</button>
+      <button>15</button>
+      <button>16</button>
+      <button>17</button>
+      <button>18</button>
+      <button>19</button>
+      <button>20</button>
+      <button>21</button>
+      <button>22</button>
+      <button>23</button>
+      <button>24</button>
+    </div>
+
+    <!-- Right Side Seats -->
+    <div class="btns"  style="background-color: rgba(165, 42, 42, 0.3);">
+      <button>25</button>
+      <button>26</button>
+      <button>27</button>
+      <button>28</button>
+      <button>29</button>
+      <button>30</button>
+      <button>31</button>
+      <button>32</button>
+      <button>33</button>
+      <button>34</button>
+      <button>35</button>
+      <button>36</button>
+      <button>37</button>
+      <button>38</button>
+      <button>39</button>
+      <button>40</button>
+      <button>41</button>
+      <button>42</button>
+      <button>43</button>
+      <button>44</button>
+    </div>
+  </div>
+
+  <script>
+    // ✅ All seat button selection
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach((btns)=>{
+    btns.addEventListener("click",()=>{
+    btns.classList.toggle("booked")
+    
+    })
+    
+    
+    })
+  </script>
+</body>
+</html>

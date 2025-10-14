@@ -207,3 +207,5 @@ def book(request):
  
    ]
    return render(request,"books.html",{"books":books})
+def seat(request):
+  return render(request,"seats.html")
