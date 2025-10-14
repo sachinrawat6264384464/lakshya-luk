@@ -107,11 +107,24 @@ def admin_login(request):
     return render(request, 'admin.html')
 
 # -------- Home Page --------
+from django.shortcuts import render
+
 def index(request):
     context = {
         'username': request.session.get('username'),
-        'is_admin': request.session.get('is_admin', False)
+        'is_admin': request.session.get('is_admin', False),
+        'books': [  # plural naam lo — clarity ke liye
+            {"img": "images/bharatkirajya.jpg", "name": "Bharat Ki Rajyavivastha"},
+            {"img": "images/gyan sampada.jpg", "name": "Gyan Sampada"},
+            {"img": "images/mppsc main.jpg", "name": "MPPSC Main"},
+            {"img": "images/parybarn.jpg", "name": "Paryavarn"},
+             {"img": "images/history.jpg", "name": "History"},
+            {"img": "images/mp samanya gyan.jpg", "name": "mp samanya gyan"},
+            
+            {"img": "images/science.jpg", "name": "Science"},
+        ]
     }
+
     return render(request, 'index.html', context)
 
 # -------- Logout --------
@@ -180,4 +193,17 @@ def delete_visiter(request, id):
 def fecilities(request):
     
     return render(request,"fecilities.html")
-
+def book(request):
+   books=[
+   {"img": "images/bharatkirajya.jpg", "name": "Bharat Ki Rajyavivastha"},
+            {"img": "images/gyan sampada.jpg", "name": "Gyan Sampada"},
+            {"img": "images/mppsc main.jpg", "name": "MPPSC Main"},
+            {"img": "images/parybarn.jpg", "name": "Paryavarn"},
+            {"img": "images/history.jpg", "name": "History"},
+            {"img": "images/mp samanya gyan.jpg", "name": "mp samanya gyan"},
+            {"img": "images/science.jpg", "name": "Science"},
+    
+            
+ 
+   ]
+   return render(request,"books.html",{"books":books})
