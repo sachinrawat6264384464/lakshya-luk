@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facilities - Lakhsya Library</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #aba9a9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a73e8, #34a853);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .facility-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .facility-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    }
+
+    .facility-card img {
+      width: 120px;
+      height: 70px;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+    }
+
+    .facility-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .facility-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .facility-card {
+        padding: 1.5rem 1rem;
+      }
+    }
+     a {
+        color: #00ffe1;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+   <a href="{% url 'home' %}" class="back-btn">◀ back</a>
+    <h1>📚 Lakhsya Library Facilities</h1>
+  </header>
+
+  <div class="container">
+    <div class="facility-card">
+      <img src="{% static 'images/clock.png' %}" alt="24x7 Icon">
+      <h3>Open 24 × 7</h3>
+      <p>Access anytime to study or read books at your convenience.</p>
+    </div>
+
+    <div class="facility-card">
+      <img src="{% static 'images/sitting.png' %}" alt="Sitting Icon">
+      <h3>Calm & Comfortable Sitting</h3>
+      <p>Quiet and comfortable environment for focused study.</p>
+    </div>
+
+    <div class="facility-card">
+      <img src="{% static 'images/wifi.png' %}" alt="WiFi Icon">
+      <h3>Free WiFi</h3>
+      <p>High-speed internet access for research and studies.</p>
+    </div>
+
+    <div class="facility-card">
+      <img src="{% static 'images/water.png' %}" alt="RO Water Icon">
+      <h3>RO Water</h3>
+      <p>Clean and safe drinking water available for all visitors.</p>
+    </div>
+
+    <div class="facility-card">
+      <img src="{% static 'images/washroom.png' %}" alt="Washroom Icon">
+      <h3>Separate Washrooms</h3>
+      <p>Dedicated washrooms for boys and girls.</p>
+    </div>
+
+    <div class="facility-card">
+      <img src="{% static 'images/cctv.png' %}" alt="CCTV Icon">
+      <h3>CCTV Camera</h3>
+      <p>Ensuring safety and monitoring of library premises.</p>
+    </div>
+
+    <div class="facility-card">
+      <img src="{% static 'images/parking.png' %}" alt="Parking Icon">
+      <h3>Safe Parking</h3>
+      <p>Personal and secure parking facility for visitors.</p>
+    </div>
+
+    <div class="facility-card">
+      <img src="{% static 'images/launch.png' %}" alt="Lunch Icon">
+      <h3>Specific Lunch Area</h3>
+      <p>Dedicated space to have meals without disturbing others.</p>
+    </div>
+
+    <div class="facility-card">
+      <img src="{% static 'images/books.png' %}" alt="Books Icon">
+      <h3>100+ Books</h3>
+      <p>Large collection of books across multiple subjects.</p>
+    </div>
+
+    <div class="facility-card">
+      <img src="{% static 'images/pcs.png' %}" alt="Test Papers Icon">
+      <h3>PCs & Test Papers</h3>
+      <p>Access UPSC & MPPSC related test papers on computers.</p>
+    </div>
+
+    <div class="facility-card">
+      <img src="{% static 'images/cabin.png' %}" alt="Cabin Icon">
+      <h3>Cabin with Personal Light</h3>
+      <p>Private cabins with individual lights for focused study.</p>
+    </div>
+
+    <div class="facility-card">
+      <img src="{% static 'images/time.png' %}" alt="Open Time Icon">
+      <h3>Open 6:30 to 11:30</h3>
+      <p>Library operating hours for daily visitors.</p>
+    </div>
+  </div>
+
+</body>
+</html>

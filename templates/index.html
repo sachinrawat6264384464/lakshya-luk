@@ -12,7 +12,7 @@ body {
   padding: 0;
   font-family: sans-serif;
   height: 100%;
-  background-color: #767474;
+  background-color: #706d6d;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -117,7 +117,10 @@ body {
 
 /* ===================== HERO SECTION ===================== */
 .hero-content {
-  background-color: #3a3939;
+  background-image: url("/static/images/home.jpg"); /* correct path from STATIC_URL */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -126,13 +129,14 @@ body {
   font-size: 2rem;
   color: white;
   text-align: center;
-
+  
 }
 
 .hero-content h1 {
   font-size: clamp(2rem, 5vw, 4rem);
   margin-bottom: 0.5rem;
     animation: frude 2s ease ;
+    margin-top: 26vw;
     
 }
 
@@ -339,10 +343,10 @@ color: #e9ecef;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 6vw;
+  font-size: 90px;
   font-weight: 700;
   color: #e9ecef;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 marquee {
@@ -521,7 +525,7 @@ body.dark-mode {
 }
 
 </style>
-<body class="light-mode" >
+<body class="light-mode" style="background-color: #a09f9f;" >
 
 <!-- Intro Video -->
 <div id="intro">
@@ -552,7 +556,7 @@ body.dark-mode {
   <li><a href="visiter">Add_Visiter ➕</a></li>
   <li><a href="studentdata">Student_Data 📊</a></li>
     {% else %}
-        <li><a href="visiterdata">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/about/">About</a></li>
           
        
@@ -562,8 +566,8 @@ body.dark-mode {
         {% if is_admin %}
   <li><a href="{% url 'visiterdata' %}">Visiter_Data 📉</a></li>
 {% else%}
-        <li><a href="#services">Facilities</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="/fecilities/">Facilities</a></li>
+       
 {% endif %}
     </ul>
      
@@ -635,7 +639,7 @@ body.dark-mode {
 </div></div>
 
 
-<div class="scroller"  style="background-color: #af3c3c;">
+<div class="scroller"  style="background-color: #823838; height: 13vh;">
   <marquee   behavior="scroll" direction="left" scrollamount="9" >In the quiet corners of the library, I lose myself, find magic, dream endlessly, and travel through worlds of stories
   </marquee>
 
@@ -666,6 +670,7 @@ body.dark-mode {
       </div>
     </div>
     <div class="box10">
+    <img src="/static/images/book1.jpg" alt="">
       <div class="caption10">
         <h2>Book 3</h2>
         <p>Author: R.K. Narayan</p>
@@ -673,6 +678,7 @@ body.dark-mode {
       </div>
     </div>
     <div class="box11">
+    <img src="/static/images/book3.jpg" alt="">
       <div class="caption11">
         <h2>Book 4</h2>
         <p>Author: Chetan Bhagat</p>
@@ -680,13 +686,15 @@ body.dark-mode {
       </div>
     </div>
     <div class="box12">
+    <img src="/static/images/book2.jpg" alt="">
       <div class="caption12">
         <h2>Book 5</h2>
         <p>Author: Sudha Murthy</p>
         <button>Read Now</button>
       </div>
     </div>
-    <div class="box12">
+    <div class="box12" style="object-fit: cover; object-position:center; ">
+      <img src="/static/images/book4.jpg" alt="">
       <div class="caption12">
         <h2>Book 6</h2>
         <p>Author: Sudha Murthy</p>
@@ -718,14 +726,24 @@ body.dark-mode {
 <div class="map-container">
     <iframe 
       loading="lazy" 
-      src="https://maps.google.com/maps?q=Apple%20Hospital%2015%2F1%2C%20Bhawarkua%20Main%20Rd%2C%20Transport%20Nagar%2C%20Indore%2C%20Madhya%20Pradesh%20452008&amp;t=m&amp;z=16&amp;output=embed&amp;iwloc=near" 
-      title="Apple Hospital Location">
+      src="https://maps.google.com/lakshaylibrary2025=lakshay%20library%2015%2F1%2C%20mangliya%20Main%20Rd%2C%20mahakal hotel%20Nagar%2C%20Indore%2C%20Madhya%20Pradesh%20452008&amp;t=m&amp;z=16&amp;output=embed&amp;iwloc=near" 
+      title="Lakshay library location">
     </iframe>
   </div>
 
   
   
-  
+ <marquee   id="myMarquee"  style="margin-left: 30%;"  width="50%" behavior="scroll" direction="left" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()">
+ <section style="display: flex; gap: 1.3rem; padding: 4vh 6vw;">
+ <div><img style="border-radius: 10px; width: 340px;" src="/static/images/rew1.jpg" alt=""></div>
+ <div><img style="border-radius: 10px;  width: 340px;" src="/static/images/rew2.jpg" alt=""></div>
+ <div><img style="border-radius: 10px;  width: 340px;" src="/static/images/rew5.jpg" alt=""></div>
+ <div><img style="border-radius: 10px;   width: 340px;" src="/static/images/rew3.jpg" alt=""></div>
+ <div><img style="border-radius: 10px;  width: 340px;" src="/static/images/rew4.jpg" alt=""></div>
+
+</section>
+ 
+ </marquee> 
   
   
 
@@ -763,7 +781,7 @@ body.dark-mode {
       <h3>Contact Us</h3>
       <p><strong>Phone:</strong> 8889918922</p>
     <p><strong>Email:</strong> 
-      <a href="mailto:info@applehospital.co.in">lakshaylibrary2025@gmail.com</a>    
+      <a style="color: #792727;" href="mailto:info@applehospital.co.in">lakshaylibrary2025@gmail.com</a>    
     </p>
     
 

@@ -28,6 +28,7 @@ urlpatterns = [
 
     path('about/',about, name='about'),
     path('visiter/', visiter, name='visiter'),
+    path('fecilities/', fecilities, name='fecilities'),
  
     
     path('delete_visiter/<int:id>/', delete_visiter, name='delete_visiter'),

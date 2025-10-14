@@ -177,3 +177,7 @@ def delete_visiter(request, id):
     student_visiter = get_object_or_404(Visiterdata, id=id)
     student_visiter.delete()
     return redirect('visiterdata')
+def fecilities(request):
+    
+    return render(request,"fecilities.html")
+
