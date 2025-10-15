@@ -31,7 +31,7 @@ urlpatterns = [
     path('book/', book, name='book'),
     path('fecilities/', fecilities, name='fecilities'),
     path('seat/', seat, name='seat'),
- 
+ path('tasks/', tasks_view, name='tasks'),
     
     path('delete_visiter/<int:id>/', delete_visiter, name='delete_visiter'),
 

@@ -9,14 +9,14 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: #aba9a9;
+      background: #457674;
       margin: 0;
       padding: 0;
-      color: #333;
+      color: #070707;
     }
 
     header {
-      background: linear-gradient(135deg, #1ae8cd, #0dcd7a);
+      background: linear-gradient(135deg, #7ef9e9, #537e6b);
       color: white;
       text-align: center;
       padding: 2rem 1rem;
@@ -94,10 +94,10 @@
 <body>
 
   <header>
-   <a href="{% url 'home' %}" class="back-btn">◀ back</a>
+  
     <h1>📚 Lakshya Library Book section</h1>
   </header>
-
+<a href="{% url 'home' %}" style="color: #333; font-size: 1.2rem;" class="back-btn">◀ back</a>
   <div class="container">
   {% for book in books%}
     <div class="facility-card">

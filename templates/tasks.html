@@ -1,0 +1,272 @@
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Task List (localStorage)</title>
+  <style>
+    /* Simple, responsive styling */
+    :root {
+      --bg: #0f1724;
+      --card: #111827;
+      --accent: #06b6d4;
+      --muted: #94a3b8;
+      --white: #f8fafc;
+    }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #58efc9 0%, #071621 100%);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+     background-color: rgb(23, 22, 22);
+      border-radius: 12px;
+      padding: 22px;
+      box-shadow: 0px 8px 30px 13px rgba(3, 228, 176, 0.7);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    h1 {
+      margin: 0 0 14px 0;
+      font-size: 24px;
+      letter-spacing: -0.2px;
+    }
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    input#taskInput {
+      flex: 1;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      color: var(--white);
+      font-size: 15px;
+      outline: none;
+      transition: box-shadow .12s ease;
+    }
+    input#taskInput:focus {
+      box-shadow: 0 4px 14px rgba(6,182,212,0.08);
+      border-color: var(--accent);
+    }
+    button#addBtn {
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(90deg, #06b6d4, #0891b2);
+      color: #042027;
+      font-weight: 600;
+      cursor: pointer;
+      min-width: 90px;
+      transition: transform .08s ease;
+    }
+    button#addBtn:active { transform: translateY(1px); }
+
+    .tasks {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .task-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .task-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .task-text {
+      font-size: 15px;
+      color: var(--white);
+      word-break: break-word;
+    }
+    .task-time {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .done-btn {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      background: rgba(255,255,255,0.04);
+      color: var(--white);
+    }
+    .done-btn:hover { opacity: 0.9; }
+    .empty {
+      color: var(--muted);
+      text-align: center;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      background: rgba(255,255,255,0.01);
+      border: 1px dashed rgba(255,255,255,0.02);
+    }
+
+    @media (max-width: 520px) {
+      h1 { font-size: 20px; }
+      .container { padding: 14px; }
+      button#addBtn { min-width: 74px; padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+      <a href="{% url 'home' %}" style="text-decoration: none; color: #f8fafc;" class="back-btn">◀ Back</a>
+    <h1>My Tasks</h1>
+
+    <div class="input-row" aria-label="add-task">
+      <input id="taskInput" type="text" placeholder="Type your task and press Add or Enter" aria-label="Task input" />
+      <button id="addBtn" aria-label="Add task">Add</button>
+    </div>
+
+    <div id="tasksContainer" class="tasks" aria-live="polite"></div>
+  </div>
+
+  <script>
+    // Key used in localStorage
+    const STORAGE_KEY = 'my_tasks_v1';
+
+    // DOM
+    const taskInput = document.getElementById('taskInput');
+    const addBtn = document.getElementById('addBtn');
+    const tasksContainer = document.getElementById('tasksContainer');
+
+    // Load tasks from localStorage (array of objects {id, text, createdAt})
+    function loadTasks() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return [];
+        return JSON.parse(raw) || [];
+      } catch (e) {
+        console.error('Could not parse tasks from localStorage', e);
+        return [];
+      }
+    }
+
+    // Save tasks array to localStorage
+    function saveTasks(tasks) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    }
+
+    // Render tasks into DOM
+    function renderTasks() {
+      const tasks = loadTasks();
+      tasksContainer.innerHTML = '';
+      if (tasks.length === 0) {
+        const empty = document.createElement('div');
+        empty.className = 'empty';
+        empty.textContent = 'No tasks yet. Add one above.';
+        tasksContainer.appendChild(empty);
+        return;
+      }
+
+      // show newest first
+      tasks.slice().reverse().forEach(task => {
+        const card = document.createElement('div');
+        card.className = 'task-card';
+        card.dataset.id = task.id;
+
+        const left = document.createElement('div');
+        left.className = 'task-left';
+
+        const text = document.createElement('div');
+        text.className = 'task-text';
+        text.textContent = task.text;
+
+        const time = document.createElement('div');
+        time.className = 'task-time';
+        const d = new Date(task.createdAt);
+        time.textContent = d.toLocaleString();
+
+        left.appendChild(text);
+        left.appendChild(time);
+
+        const doneBtn = document.createElement('button');
+        doneBtn.className = 'done-btn';
+        doneBtn.textContent = 'Done';
+        doneBtn.setAttribute('aria-label', 'mark done');
+
+        doneBtn.addEventListener('click', () => {
+          removeTask(task.id);
+        });
+
+        card.appendChild(left);
+        card.appendChild(doneBtn);
+
+        tasksContainer.appendChild(card);
+      });
+    }
+
+    // Add task
+    function addTask(text) {
+      text = String(text || '').trim();
+      if (!text) return;
+      const tasks = loadTasks();
+      const newTask = {
+        id: Date.now().toString() + Math.random().toString(36).slice(2,8),
+        text: text,
+        createdAt: new Date().toISOString()
+      };
+      tasks.push(newTask);
+      saveTasks(tasks);
+      renderTasks();
+      taskInput.value = '';
+      taskInput.focus();
+    }
+
+    // Remove by id
+    function removeTask(id) {
+      const tasks = loadTasks().filter(t => t.id !== id);
+      saveTasks(tasks);
+      renderTasks();
+    }
+
+    // Keyboard: Enter to add
+    taskInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        addTask(taskInput.value);
+      }
+    });
+
+    // Add button
+    addBtn.addEventListener('click', () => {
+      addTask(taskInput.value);
+    });
+
+    // Initial render
+    renderTasks();
+
+    // Optional: sync across tabs
+    window.addEventListener('storage', (e) => {
+      if (e.key === STORAGE_KEY) renderTasks();
+    });
+  </script>
+</body>
+</html>
+{% endblock %}

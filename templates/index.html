@@ -269,14 +269,14 @@ color: #e9ecef;
   height: 320px;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(135deg, #3c3e3e, #2a2b2b);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  background: linear-gradient(135deg, #67f7f4, #2a2b2b);
+  box-shadow: 0 8px 20px rgba(249, 247, 247, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .box8:hover, .box9:hover, .box10:hover, .box11:hover, .box12:hover {
   transform: scale(1.05);
-  box-shadow: 0 12px 25px rgba(0, 255, 170, 0.5);
+  box-shadow: 0 12px 25px rgba(248, 252, 250, 0.5);
 }
 
 .caption8, .caption9, .caption10, .caption11, .caption12 {
@@ -285,7 +285,7 @@ color: #e9ecef;
   width: 100%;
   height: 60%;
   border-radius: 20px 20px 0 0;
-  background: linear-gradient(180deg, rgba(16,185,129,0.9), rgba(5,150,105,0.9));
+  background: linear-gradient(180deg, rgba(22, 22, 22, 0.9), rgba(5,150,105,0.9));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -571,6 +571,7 @@ width: 60vw;
     {% else %}
         <li><a href="/">Home</a></li>
         <li><a href="/about/">About</a></li>
+        <li><a href="/tasks/">Add-tasks</a></li>
           
        
 {% endif %}
@@ -579,6 +580,7 @@ width: 60vw;
         {% if is_admin %}
   <li><a href="{% url 'visiterdata' %}">Visiter_Data 📉</a></li>
   <li><a href="{% url 'seat' %}">Sheets_data📉</a></li>
+   <li><a href="/tasks/">Add-tasks ➕</a></li>
 {% else%}
         <li><a href="/fecilities/">Facilities</a></li>
        
