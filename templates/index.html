@@ -548,6 +548,77 @@ width: 60vw;
   left: 0%;
   bottom: 125%;
   }
+  .nav-links {
+    display: flex;
+    flex-direction: row;  /* Vertical alignment */
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+    background-color: #1a1a1a;
+    padding: 20px 3px;
+   
+    
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links li a.we {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+    top: 20px;
+    
+  left: 5px;
+  }
+   .nav-links li a.wee {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+    top: 20px;
+    
+  left: 0px;
+  }
+
+
+  .nav-links li a.we:hover {
+    background-color: #00d1ff;
+    color: #000;
+  }
+
+  /* Logo + spacing adjustment */
+  .logo {
+    position: static;
+    margin-bottom: 10px;
+   
+   
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 10px 0;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
 }
 .bookbtn:hover{
    box-shadow: 0 12px 25px rgba(37, 40, 39, 0.5);
@@ -581,18 +652,21 @@ width: 60vw;
 <div class="nav-links-container" >
     <ul class="nav-links">
  {% if is_admin %}
-  
-  <li><a href="visiter">Ad_Visiter</a></li>
-  <li><a href="studentdata">St_Data</a></li>
-  <li><a href="{% url 'visiterdata' %}">V_Data</a></li>
-  <li><a href="{% url 'seat' %}">S-data</a></li>
-   <li><a href="/tasks/">A-tasks</a></li>
-    {% else %}
-        <li><a href="/">Home</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/tasks/">➕tasks</a></li>
-       <li><a href="/fecilities/">Facilities</a></li>   
+  <li><a class="we" href="visiter">Ad_Visiter</a></li>
+  <li><a class="we"  href="studentdata">St_Data</a></li>
+  <li><a class="we"  href="{% url 'visiterdata' %}">V_Data</a></li>
+  <li><a class="we"  href="{% url 'seat' %}">S-data</a></li>
+   <li><a class="we"  href="/tasks/">A-tasks</a></li>
        
+  
+    
+    {% else %}
+     
+      <li><a  class="wee"  href="/">Home</a></li>
+    
+        <li><a  class="wee"  href="/about/">About</a></li>
+        <li><a  class="wee"  href="/tasks/">➕tasks</a></li>
+       <li><a  class="wee"  href="/fecilities/">Facilities</a></li>
 {% endif %}
     </ul>
      
