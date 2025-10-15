@@ -201,7 +201,17 @@ color: #e9ecef;
   font-size: 1.3rem;
 }
 
-
+@media (max-width: 370px) {
+  .hero-content h1{
+  position: relative; 
+  top: 23vw;
+  }
+  .hero-content  .highlight {
+   position: relative; 
+  top: 5rem;
+  bottom: 0px;
+  }
+}
 
 
 
@@ -566,23 +576,16 @@ width: 60vw;
     <ul class="nav-links">
  {% if is_admin %}
   
-  <li><a href="visiter">Add_Visiter ➕</a></li>
-  <li><a href="studentdata">Student_Data 📊</a></li>
+  <li><a href="visiter">Ad_Visiter</a></li>
+  <li><a href="studentdata">St_Data</a></li>
+  <li><a href="{% url 'visiterdata' %}">V_Data</a></li>
+  <li><a href="{% url 'seat' %}">S-data</a></li>
+   <li><a href="/tasks/">A-tasks</a></li>
     {% else %}
         <li><a href="/">Home</a></li>
         <li><a href="/about/">About</a></li>
         <li><a href="/tasks/">Add-tasks</a></li>
-          
-       
-{% endif %}
-
-       
-        {% if is_admin %}
-  <li><a href="{% url 'visiterdata' %}">Visiter_Data 📉</a></li>
-  <li><a href="{% url 'seat' %}">Sheets_data📉</a></li>
-   <li><a href="/tasks/">Add-tasks ➕</a></li>
-{% else%}
-        <li><a href="/fecilities/">Facilities</a></li>
+       <li><a href="/fecilities/">Facilities</a></li>   
        
 {% endif %}
     </ul>
