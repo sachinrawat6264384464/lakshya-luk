@@ -572,9 +572,9 @@ width: 60vw;
 @media (max-width: 770px) {
   #menu {
  position: fixed;
- top: 78px;
+ top: 97px;
  left: -340px;
- width: 40vw;
+ width: 35vw;
  background-color: #767978;
 display: flex;
 align-items: center;
@@ -627,20 +627,20 @@ transition: 1.7s ease-in-out;
   <label for="click">|||</label>
 <div  id="menu" >
     <ul >
- {% if admin%}
+ {% if is_admin %}
   <li><a  href="visiter">Add_Visiter</a></li>
   <li><a href="studentdata">Student_Data</a></li>
   <li><a href="{% url 'visiterdata' %}">Visiter_Data</a></li>
   <li><a href="{% url 'seat' %}">Seats-data</a></li>
    <li><a   href="/tasks/">To Do List</a></li>
      
-   {% else%}
+    {% else %}
      
        <li><a    href="/">Home</a></li>
         <li><a    href="/about/">About</a></li>
         <li><a    href="/tasks/">To Do List</a></li>
        <li><a    href="/fecilities/">Facilities</a></li>
-{%endif%}
+{% endif %}
     </ul>
      
 </div>
