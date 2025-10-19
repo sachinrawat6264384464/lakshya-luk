@@ -59,17 +59,13 @@ body {
  top: 2rem;
 }
 
-.nav-links li a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 500;
-  transition: color 0.3s;
-  
-  
-}
+ul{
+display: flex;
+align-items: center;
+justify-content: center;
+list-style: none;
+gap: 2rem;
 
-.nav-links li a:hover {
-  color: #00d1ff;
 }
 
 /* Topbar buttons */
@@ -399,7 +395,10 @@ marquee {
       transition: transform 0.3s ease, filter 0.3s ease;
        
     }
+label ,input{
+  display: none;
 
+}
     /* === Hover Effects === */
     .social-links a:hover img {
       transform: scale(1.2);
@@ -503,41 +502,20 @@ width: 14vw; height: 7vh; border: none; font-size: 1.2rem; font-family: 'Segoe U
 /* Toggle icon style */
 /* keep navbar links in row between 428px to 320px */
 @media (max-width: 428px) and (min-width: 320px) {
-  .nav-links-container {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent !important;
-    position: static !important;
-   
-    box-shadow: none !important;
-    width: auto !important;
-    padding: 0 !important;
+  label{
+  position: relative;
+  right: 43vw;
+  top: 9vw;
   }
 
-  .nav-links {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-   
-  }
 
-  .nav-links li {
-    margin: 0;
-  }
 .bookbtn{
 width: 38vw;
 }
 .box8 img{
 width: 60vw;
 }
-  .nav-links li a {
-    font-size: 18px;
-    position: relative;
-    right: 1.4rem;
-    bottom: 1.3rem;
-  }
+  
   .silo {
  
   top:2%;
@@ -548,55 +526,10 @@ width: 60vw;
   left: 0%;
   bottom: 125%;
   }
-  .nav-links {
-    display: flex;
-    flex-direction: row;  /* Vertical alignment */
-    align-items: center;
-    width: 100%;
-    gap: 8px;
-    background-color: #1a1a1a;
-    padding: 20px 3px;
-   
-    
-  }
+  
 
-  .nav-links li {
-    width: 100%;
-    text-align: center;
-  }
+  
 
-  .nav-links li a.we {
-    display: block;
-    width: 100%;
-    padding: 10px 0;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
-    position: relative;
-    top: 20px;
-    
-  left: 5px;
-  }
-   .nav-links li a.wee {
-    display: block;
-    width: 100%;
-    padding: 10px 0;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
-    position: relative;
-    top: 0px;
-    
-  left: 0px;
-  }
-
-
-  .nav-links li a.we:hover {
-    background-color: #00d1ff;
-    color: #000;
-  }
 
   /* Logo + spacing adjustment */
   .logo {
@@ -634,6 +567,38 @@ width: 60vw;
    box-shadow: 0 12px 25px rgba(37, 40, 39, 0.5);
    font-size: 1.2rem;
 }
+
+
+@media (max-width: 770px) {
+  #menu {
+ position: fixed;
+ top: 78px;
+ left: -340px;
+ width: 40vw;
+ background-color: #767978;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 10px;
+box-shadow: 4px 6px 8px rgb(237, 237, 235);
+transition: 1.7s ease-in-out;
+  
+  }
+   #menu ul{
+   flex-direction: column;
+   }
+   label{
+       display: block;
+       font-size: 2rem;
+       transform: rotate(90deg);
+      
+   }
+   #click:checked ~ #menu{
+  left: 0px;
+  
+}
+   
+}
 </style>
 <body class="light-mode" style="background-color: #a09f9f;" >
 
@@ -658,26 +623,24 @@ width: 60vw;
     <div class="logo-container" id="logo1">
         <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo" style="width: 120px; height: 60px; position: absolute; right: 90%; ;">
     </div>
+  <input type="checkbox" id="click">
+  <label for="click">|||</label>
+<div  id="menu" >
+    <ul >
+ {% if admin%}
+  <li><a  href="visiter">Add_Visiter</a></li>
+  <li><a href="studentdata">Student_Data</a></li>
+  <li><a href="{% url 'visiterdata' %}">Visiter_Data</a></li>
+  <li><a href="{% url 'seat' %}">Seats-data</a></li>
+   <li><a   href="/tasks/">To Do List</a></li>
      
-<div class="nav-links-container" >
-    <ul class="nav-links">
- {% if is_admin %}
-  <li><a class="we" href="visiter">Ad_Visiter</a></li>
-  <li><a class="we"  href="studentdata">St_Data</a></li>
-  <li><a class="we"  href="{% url 'visiterdata' %}">V_Data</a></li>
-  <li><a class="we"  href="{% url 'seat' %}">S-data</a></li>
-   <li><a class="we"  href="/tasks/">A-tasks</a></li>
-       
-  
-    
-    {% else %}
+   {% else%}
      
-      <li><a  class="wee"  href="/">Home</a></li>
-    
-        <li><a  class="wee"  href="/about/">About</a></li>
-        <li><a  class="wee"  href="/tasks/">➕tasks</a></li>
-       <li><a  class="wee"  href="/fecilities/">Facilities</a></li>
-{% endif %}
+       <li><a    href="/">Home</a></li>
+        <li><a    href="/about/">About</a></li>
+        <li><a    href="/tasks/">To Do List</a></li>
+       <li><a    href="/fecilities/">Facilities</a></li>
+{%endif%}
     </ul>
      
 </div>
