@@ -55,7 +55,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DATABASES = {
     'default': dj_database_url.config(
-          default=os.environ.get("DATABASE_URL")
+          default=os.environ.get("postgresql://lakshay_library_user:XL9ukhLBTYDnvZGdNa41ErAHYi9BzABL@dpg-d42hhb7gi27c73c5vgrg-a.oregon-postgres.render.com/lakshay_library")
        
     )
 }
