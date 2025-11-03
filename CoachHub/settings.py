@@ -13,10 +13,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in productio
 SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key')
 DEBUG = True
-ALLOWED_HOSTS = ["lakshya-luk-production.up.railway.app","127.0.0.1"]
+ALLOWED_HOSTS = ["https://lakshya-luk.onrender.com","127.0.0.1"]
 
 
-CSRF_TRUSTED_ORIGINS = ["https://lakshya-luk-production.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://lakshya-luk.onrender.com"]
 
 # =========================
 # Installed apps
@@ -55,7 +55,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DATABASES = {
     'default': dj_database_url.config(
-          default=os.environ.get("postgresql://lakshay_library_user:XL9ukhLBTYDnvZGdNa41ErAHYi9BzABL@dpg-d42hhb7gi27c73c5vgrg-a.oregon-postgres.render.com/lakshay_library")
+          default=os.environ.get("DATABASE_URL")
        
     )
 }
